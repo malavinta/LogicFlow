@@ -20,26 +20,26 @@
   </a>
 </p>
 
-LogicFlow 是一款流程图编辑框架，提供了一系列流程图交互、编辑所必需的功能和简单灵活的节点自定义、插件等拓展机制，方便我们快速在业务系统内满足类流程图的需求。
+LogicFlow is a flowchart editing framework that provides a series of functions necessary for flowchart interaction and editing, as well as simple and flexible extension mechanisms such as node customization and plug-ins, so that we can quickly meet the needs of class flowcharts in the business system.
 
-## 特性
+## Features
 
 
-- 🛠 高拓展性
+- 🛠 High scalability
   
-  兼容各种产品自定义的流程编辑需求，绝大部分模块以插件的形式实现，支持各模块自由插拔。
+  Compatible with the process editing requirements of various product customizations, most modules are implemented in the form of plug-ins, and each module can be freely plugged and unplugged.
 
-- 🚀 重执行
+- 🚀 Re-execute
   
-  流程图能完备的表达业务逻辑，不受流程引擎限制。
+  Flowcharts can fully express business logic and are not limited by process engines.
 
-- 🎯 专业
+- 🎯 Professional
   
-  专注于业务流程图编辑的框架
+  A framework focused on business process diagram editing
 
-## 使用
+## use
 
-### 安装
+### Install
 
 ```sh
 # npm
@@ -47,40 +47,40 @@ $ npm install @logicflow/core @logicflow/extension --save
 
 ```
 
-### 代码示例
+### Code Example
 
 ```js
-// 创建容器
+// create container
 <div id="container"></div>;
 
-// 准备数据
+// prepare data
 const data = {
-  // 节点
+  // node
   nodes: [
     {
       id: 21,
       type: 'rect',
       x: 100,
-      y: 200,
+      and: 200,
       text: {
-        value: '矩形节点',
+        value: 'rectangular node',
         x: 100,
-        y: 200,
+        and: 200,
       },
     },
     {
       id: 50,
       type: 'circle',
       x: 300,
-      y: 400,
+      and: 400,
       text: {
-        value: '圆形节点',
+        value: 'circle node',
         x: 300,
-        y: 400,
+        and: 400,
       },
     },
   ],
-  // 边
+  // side
   edges: [
     {
       type: 'polyline',
@@ -89,7 +89,7 @@ const data = {
     },
   ],
 };
-// 渲染画布
+// render the canvas
 const lf = new LogicFlow({
   container: document.querySelector('#container'),
   width: 700,
@@ -99,68 +99,68 @@ const lf = new LogicFlow({
 lf.render(data);
 ```
 
-## 文档
+## Documentation
 
-[官方文档](http://logic-flow.org)
+[Official Documentation](http://logic-flow.org)
 
-- [快速上手](http://logic-flow.org/guide/start.html#安装)
-- [基础教程](http://logic-flow.org/guide/basic/logic-flow.html)
-- [进阶指南](http://logic-flow.org/guide/advance/theme.html)
-- [拓展](http://logic-flow.org/guide/extension/extension-components.html)
-- [示例](http://logic-flow.org/usage/bpmn.html)
+- [Quick Start](http://logic-flow.org/guide/start.html#installation)
+- [Basic Tutorial](http://logic-flow.org/guide/basic/logic-flow.html)
+- [Advance Guide](http://logic-flow.org/guide/advance/theme.html)
+- [Extension](http://logic-flow.org/guide/extension/extension-components.html)
+- [Example](http://logic-flow.org/usage/bpmn.html)
 
-## 核心能力
+## Core competencies
 
-### 流程图编辑器快速搭建
+### Flowchart editor to quickly build
 
-提供了一个流程图编辑所必需的各项能力，这也是 LogicFlow 的基础能力：
+Provides the capabilities necessary for a flowchart editor, which is also the basic capability of LogicFlow:
 
-- 图的绘制能力。基于 SVG 来绘制形状各异的节点和线，并提供了基础的节点（矩形、圆形、多边形等）和线（直线、折线、曲线）
-- 各类交互能力，让图动起来。根据节点、线、图的各类鼠标事件（hover、点击、拖拽等）做出反应。比如节点拖拽、拖拽创建边、线的调整、双击节点编辑文本等
-- 提升编辑效率的能力。提供网格、对齐线，上一步、下一步，键盘快捷键，图放大缩小等配套能力，帮助用户提升编辑效率
-- 提供了丰富的 API ，宿主研发通过 API 传参调用和监听事件的方式，与 LogicFlow 完成交互
+- Diagram drawing ability. Draw nodes and lines of various shapes based on SVG, and provide basic nodes (rectangles, circles, polygons, etc.) and lines (straight lines, polylines, curves)
+- Various interactive capabilities to make the map move. React according to various mouse events (hover, click, drag, etc.) of nodes, lines, and graphs. Such as node dragging, dragging to create edges, line adjustment, double-clicking nodes to edit text, etc.
+- Ability to improve editing efficiency. Provides supporting capabilities such as grid, alignment line, previous step, next step, keyboard shortcuts, image zoom in and zoom out, etc. to help users improve editing efficiency
+- Provides a wealth of APIs, and the host R&D completes the interaction with LogicFlow by passing parameters and monitoring events through the API
 
-  下面是通过 LogicFlow 内置的节点和配套能力，做的流程图示例
+  The following is an example of a flowchart made through the built-in nodes and supporting capabilities of LogicFlow
   ：
 
     <image src="https://dpubstatic.udache.com/static/dpubimg/eEMT14E7BR/lfexample1.gif" width="500"/>
 
-### 基于业务场景拓展
+### Expansion based on business scenarios
 
-当基础能力无法满足业务需求的时候，便需要基于业务场景拓展。
+When basic capabilities cannot meet business needs, it needs to be expanded based on business scenarios.
 
-- 设置图上所有元素的样式，比如各种节点、线、锚点、箭头、对齐线的大小颜色等，满足对前端样式调整的需求
-- API 拓展。支持在 LogicFlow 上注册自定义的方法，比如通过 API 拓展提供图片下载的方法
-- 自定义节点、线。内置的矩形、圆形等图形类节点往往无法满足实际的业务需求，需要定义具有业务意义的节点。LogicFlow 提供了 的方式让用户定制具有自定义图形、业务数据的节点，比如流程审批场景中的 “审批” 节点
-- 拓展组件。LogicFlow 在 SVG 图层上提供了 HTML 层和一系列坐标转换逻辑，并支持在 HTML 层注册组件。宿主研发可以通过 LogicFlow 的 API，基于任何 View 框架开发组件，比如节点的右键菜单、控制面板等
-- 数据转换 adapter。LogicFlow 默认导出的图数据不一定适合所有业务，此时可以通过 adapter API，在图数据从 LogicFlow 输入、输出的时候做自定义转换，比如转换成 BPMN 规范的图数据
-- 内置部分拓展能力。基于上述拓展能力，我们还单独提供了 extension 的包，用来存放当前业务下沉淀出的具有通用性的节点、组件等，比如面向 BPMN 规范的节点和数据 adapter，默认菜单。注意 extension 可以单独安装，并支持按需引入
+- Set the style of all elements on the graph, such as various nodes, lines, anchor points, arrows, size and color of alignment lines, etc., to meet the needs of front-end style adjustment
+- API extension. Support for registering custom methods on LogicFlow, such as methods for providing image downloads through API extensions
+- Custom nodes, lines. The built-in graphics nodes such as rectangle and circle often cannot meet the actual business requirements, and it is necessary to define nodes with business significance. LogicFlow provides a way for users to customize nodes with custom graphics and business data, such as the "approval" node in the process approval scenario
+- Expansion components. LogicFlow provides HTML layer and a series of coordinate transformation logic on SVG layer, and supports registering components in HTML layer. Host R&D can develop components based on any View framework through the LogicFlow API, such as the right-click menu of nodes, control panels, etc.
+- Data conversion adapter. The graph data exported by LogicFlow by default may not be suitable for all businesses. At this time, you can use the adapter API to do custom conversion when graph data is input and output from LogicFlow, such as converting to BPMN standard graph data
+- Built-in part of the expansion capabilities. Based on the above expansion capabilities, we also provide a separate extension package to store common nodes, components, etc. precipitated under the current business, such as nodes and data adapters oriented to the BPMN specification, and the default menu. Note that extensions can be installed separately and support importing on demand
 
-基于上述拓展的能力，前端研发能够根据实际业务场景的需求，灵活的开发出所需的节点、组件等。下面有两个基于 LogicFlow 拓展能力做出的流程图
+Based on the above expansion capabilities, front-end R&D can flexibly develop the required nodes and components according to the needs of actual business scenarios. The following are two flowcharts based on LogicFlow's extension capabilities
 
-#### BPMN 规范
+#### BPMN specification
 
 <image src="https://dpubstatic.udache.com/static/dpubimg/CS6S6q9Yxf/lfexample2.gif" width="500"/>
 
-#### 审批流
+#### Approval Flow
 
 <image src="https://dpubstatic.udache.com/static/dpubimg/uBeSlMEytL/lfexample3.gif" width="500"/>
 
-#### vue 应用 demo
+#### vue application demo
 
 <image src="https://dpubstatic.udache.com/static/dpubimg/e35cef10-bb7c-4662-a494-f5aac024c092.gif"/>
 
-[代码地址](https://github.com/xinxin93/logicflow_vue_demo)
-## 联系我们
+[Code address](https://github.com/xinxin93/logicflow_vue_demo)
+## contact us
 
-### 加入微信群
+### Join WeChat group
 
-添加微信号：logic-flow 加入用户群
+Add WeChat account: logic-flow to join the user group
 
-### 加入 QQ 群
+### Join QQ group
 
 <image src="https://dpubstatic.udache.com/static/dpubimg/VMBzV7jhh8/qq.png" width="300"/>
 
-### 贡献代码
+### Contribute code
 
-LogicFlow对外持开放态度，不论是只修改文档的标点符合还是对LogicFlow的整体功能有大的重构我们都欢迎。对于您的每一个PR我们都会认真查看、回复、合并。详情见[LogicFlow贡献指南](https://github.com/didi/LogicFlow/blob/master/CONTRIBUTING.md)
+LogicFlow is open to the outside world, whether it is only to modify the punctuation of the document or to have a major refactoring of the overall function of LogicFlow, we welcome it. For each of your PRs, we will carefully review, reply, and merge them. For details, see [LogicFlow Contribution Guidelines](https://github.com/didi/LogicFlow/blob/master/CONTRIBUTING.md)
