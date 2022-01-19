@@ -2,25 +2,25 @@
 
 ## Start
 
-我们选用 fork 仓库，然后提交 PR 的形式进行开发。
+We choose the fork repository, and then submit the form of PR for development.
 
-### clone 自己 fork 后的仓库
+### clone the repository after your fork
 
 ```shell
 git clone <your forked repository>
 ```
 
-### 安装项目依赖
+### Install project dependencies
 
-> 需要提前安装 yarn
+> Need to install yarn in advance
 
 ```shell
 npm run bootstrap
 ```
 
-### 构建 types 并打包
+### Build types and package
 
-LF 使用 monorepo 的形式进行管理，各个 package 之间存在依赖关系，所以需要先构建一次类型和源码才能进行开发。
+LF is managed in the form of monorepo, and there is a dependency relationship between each package, so it is necessary to build the type and source code once before development.
 
 ```shell
 npm run build:types
@@ -28,32 +28,32 @@ npm run build:types
 npm run build
 ```
 
-### 启动本地开发
+### Start local development
 
-开发 core 包
+develop core package
 
 ```shell
 cd packages/core
 npm run dev
 
-# 或跳过以上“构建部分”直接运行
+# or skip the above "build part" and run directly
 npm run dev:core
 ```
 
-开发 extension
+development extension
 
 ```shell
 cd packages/extension
 npm run dev
 
-# 或跳过以上“构建部分”直接运行
+# or skip the above "build part" and run directly
 npm run dev:extension
 ```
 
-### 项目配置修改
+### Project configuration modification
 
-windows 和 mac 平台的换行不一致，windows 下是 CRLF，mac 下是 LF，因此 windows 系统下需要修改 eslint 规则：
-（如果 widows 配置了转换为 LF，此条不适用）
+The line breaks between windows and mac platforms are inconsistent, under windows is CRLF, under mac is LF, so the eslint rules need to be modified under windows system:
+(If widows is configured to convert to LF, this item does not apply)
 
 ```js
 {
@@ -63,7 +63,7 @@ windows 和 mac 平台的换行不一致，windows 下是 CRLF，mac 下是 LF�
   }
 }
 
-// 改为
+// change to
 {
   rules: {
     'linebreak-style': ['error', process.env.NODE_ENV === 'production' ? 'unix' : 'windows'],
@@ -74,55 +74,55 @@ windows 和 mac 平台的换行不一致，windows 下是 CRLF，mac 下是 LF�
 
 ## Publish
 
-### clone 源码仓库
+### clone source repository
 
 ```shell
 git clone git@github.com:didi/LogicFlow.git
 ```
 
-### 源码打包
+### Source packaging
 
 ```shell
-# 安装依赖
+# install dependencies
 npm run bootstrap
 
-# 构建 types
+# build types
 npm run build:types
 
-# 打包
+# Bale
 npm run build
 ```
 
-### 更改 npm 官方源
+### Change npm official source
 
 ```shell
 npm config set registry https://registry.npmjs.org/
 ```
 
-### 本地登陆 npm
+### Local login to npm
 
 ```shell
 npm login
 
-# 查看是否已经登陆
+# Check if you are logged in
 npm whoami
 ```
 
-### 为项目添加 tags
+### Add tags to the project
 
 ```shell
 lerna version patch
 ```
 
-lerna version 的详细使用方式见[这里](https://github.com/lerna/lerna/tree/main/commands/version#readme)
+For the detailed usage of lerna version, see [here](https://github.com/lerna/lerna/tree/main/commands/version#readme)
 
-### 发布版本
+### release version
 
 ```shell
-npm run lerna:publish
+npm run lerna: publish
 ```
 
-### 推 tag 到远端
+### Push tag to remote
 
 ```shell
 git push origin --tags
